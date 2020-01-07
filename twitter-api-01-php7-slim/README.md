@@ -1,6 +1,10 @@
-# Listando tweets da minha timeline com uma api REST (PHP7 + SLIM FRAMEWORK)
+# Projetos de aprendizagem da API do twitter 
+## Usando PHP + Slim Framework
+
+### Lembre-se: 
 
 1. Abra o terminal no diretório e execute:
+
 ``` composer install ```
 
 2. Mude as chaves do código para as da sua conta do [Twitter Developers](https://developer.twitter.com/en/apps);
