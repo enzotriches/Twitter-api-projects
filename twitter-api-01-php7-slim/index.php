@@ -44,17 +44,6 @@ $c['notAllowedHandler'] = function ($c) {
 
 $app = new \Slim\App($c);
   
-  //
-  //$mensagens = array('to testando um negocio','um dois tres quatro','a','b','c');
-  //  
-  //$diferente = rand(0,4);
-  //
-  $b = new Biscoiteiro();
-  //
-  //$a = $mensagens[$diferente].' ('.$diferente.')';
-  //
-  //$b->makePost($a);
-  //
 
 $app->get('/', function ($request, $response, $args) {
     require_once('./View/index.php');
