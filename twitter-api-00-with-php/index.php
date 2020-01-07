@@ -4,10 +4,10 @@ require "vendor/autoload.php";
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 //CHAVES DE ACESSO - altere as chaves para as suas, pois quando você as utilizar já estão inativas
-$token_de_acesso = "3004691099-P2wNJJKPQMBXKRMrfqKIL9cgvsmBbhVqUx91JQI";
-$token_secreto_de_acesso = "4XIVG2N181rzJcCAjhh9S9lHkq4V3MRuNn52VgbpBAYzx";
+$token_de_acesso = "3004691099-kuYjdyqJvhfJJV4Q5l2dW4kae83Hm3Sqn0JLfxe";
+$token_secreto_de_acesso = "xeGWOAVGE9DdcfG9o8XuMIfYoaTxxIWSbpxhnH3CzMK5g";
 //INICIALIZAÇÃO DO TWITTEROAUTH
-$connection = new TwitterOAuth("x3wCUrbwhZkZyWL4RzKDUOZGE", "nKoS6SH4ugwhh4bI1ZZP7IIaQwXbihbT0kcFjzTYRs7Ssb5YX6", $token_de_acesso, $token_secreto_de_acesso);
+$connection = new TwitterOAuth("1Mmi1OuFHR62qAJjvu0VBVyvv", "TxYsdGBeuK8vHaALNQ90E56uSo99WAycGu42IDu4ZxWQ96GTaO", $token_de_acesso, $token_secreto_de_acesso);
 //VERIFICA AS CREDENCIAIS
 $content = $connection->get("account/verify_credentials");
 //PEGA OS ULTIMOS 25 TWEETS
@@ -51,12 +51,97 @@ $locais =  [
 
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   
 </head>
 <body class="bg-light">
+  <center><h1>Estudo sobre o tt</h1></center>
+  <canvas id="myChart_vp" style="height:2vh; width:2vw"></canvas>
+
+  <hr><br>
+  <script>
+    //
+    var ctx = document.getElementById('myChart_vp').getContext('2d');
+    var myChart_vp = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: [],
+                data: [],
+                backgroundColor: [
+                ],
+                borderColor: [
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            tooltips: {
+                mode: 'dataset'
+            },
+            hover: {
+                // Overrides the global setting
+                mode: 'index'
+            },
+             title: {
+                display: true,
+                text: 'Valor de produção da Soja em Rio Grande do Sul'
+            }
+        }
+    });
+    //
+    function addData(chart, label, data) {
+      chart.data.labels.push(label);
+   
+      chart.data.datasets[0].data.push(data);
+   
+      let r = Math.floor(Math.random() * (210 - 1)) + 1;
+      let g = Math.floor(Math.random() * (210 - 1)) + 1;
+      let b = Math.floor(Math.random() * (210 - 1)) + 1;
+      let color = 'rgba('+r+','+g+','+b+',0.4)';
+   
+      chart.data.datasets[0].backgroundColor.push(color);
+      chart.data.datasets[0].borderColor.push(color);
+    
+      chart.update();
+      console.log(myChart_vp.data.datasets[0].data);
+    }
+    //
+    $.ajax({
+      url: 'bolsonaro.php',
+      type: 'POST',
+      dataType: 'json',
+      data: {param1: 'value1'},
+    })
+    .done(function(data) {
+      console.log("success =>", data);
+      $.each(data, function(index, val) {
+         /* iterate through array or object */
+      addData(myChart_vp,val.palavra,val.porcentagem);
+
+         console.log("data",val);
+      });
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+  </script>
   <!--   H E A D E R   -->
   <nav class="nav navbar bg-primary border-bottom p-1">
     <div class="container-fluid text-center justify-content-center">
