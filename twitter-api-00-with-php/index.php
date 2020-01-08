@@ -179,7 +179,9 @@ $locais =  [
                   if(isset($trends)){
                     if(count($trends)>0){
 
-                  $local = $trends[0]['locations'][0]['name'];
+                  $local = (isset($trends[0]['locations'][0]['name']))?  $trends[0]['locations'][0]['name'] : false ;
+                  if ($local) {
+                   
                   $trend_local = $trends[0]["trends"][0]["name"];
                   $url_local = $trends[0]["trends"][0]["url"];
 
@@ -196,7 +198,8 @@ $locais =  [
                   </div>
                 </div>
               </div>
-        <?php   }} endforeach ?>
+        <?php   # code...
+                  } }} endforeach ?>
       </div>
       <!-- /T R E N D S  -->
     </div>
