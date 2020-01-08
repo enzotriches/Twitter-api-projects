@@ -4,10 +4,10 @@ require "vendor/autoload.php";
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 //CHAVES DE ACESSO - altere as chaves para as suas, pois quando você as utilizar já estão inativas
-$token_de_acesso = "3004691099-kuYjdyqJvhfJJV4Q5l2dW4kae83Hm3Sqn0JLfxe";
-$token_secreto_de_acesso = "xeGWOAVGE9DdcfG9o8XuMIfYoaTxxIWSbpxhnH3CzMK5g";
+$token_de_acesso = "3004691099-7dMUh3whTvUsduD8bXhoRI7deiVwVgWVLH1HzK7";
+$token_secreto_de_acesso = "G7cqr53IP3gWIL7sCBVBa4NfanFCOAHiB8Wwl4FUdltIu";
 //INICIALIZAÇÃO DO TWITTEROAUTH
-$connection = new TwitterOAuth("1Mmi1OuFHR62qAJjvu0VBVyvv", "TxYsdGBeuK8vHaALNQ90E56uSo99WAycGu42IDu4ZxWQ96GTaO", $token_de_acesso, $token_secreto_de_acesso);
+$connection = new TwitterOAuth("2paST3lJEjYxUvIg6sPPfWgjJ", "7PmjFYBzHfOGzIBtJeQmAO67i46YeZf3hMPdlR90po1NeVyIZ0", $token_de_acesso, $token_secreto_de_acesso);
 //VERIFICA AS CREDENCIAIS
 $content = $connection->get("account/verify_credentials");
 //PEGA OS ULTIMOS 25 TWEETS
@@ -35,6 +35,22 @@ $locais =  [
     if(isset($_POST['btn-tt'])){
       //PEGA O TWEET
       $tweet = $_POST['tweet'];
+      //POSTA O TWEET NA SUA CONTA
+      $status = $connection->post("statuses/update", ["status" => $tweet]);
+      //ATUALIZA O SEU FEED PEGANDO NOVAMENTE OS DADOS DA SUA TIMELINE
+      $tweets = $connection->get("statuses/home_timeline", ["count" => 25, "exclude_replies" => true]);
+     }
+      if(isset($_POST['btn-tt-loop'])){
+      //PEGA O TWEET
+      $tweet = $_POST['tweet-loop'];
+      $qnt = intval($_POST['qnt-loop']);
+      $i = 0;
+      for ($i=0; $i < $qnt; $i++) { 
+         $tweet = $_POST['tweet-loop']." (".$i.")";
+        //POSTA O TWEET NA SUA CONTA
+        $status = $connection->post("statuses/update", ["status" => $tweet]);
+      }
+
       //POSTA O TWEET NA SUA CONTA
       $status = $connection->post("statuses/update", ["status" => $tweet]);
       //ATUALIZA O SEU FEED PEGANDO NOVAMENTE OS DADOS DA SUA TIMELINE
@@ -70,7 +86,7 @@ $locais =  [
   </nav>
   <!-- /  H E A D E R   -->
   <!-- P O S T   -->
-  <div class="container border shadow rounded mt-1 mb-1 shadow p-1 ">
+  <div class="container border shadow rounded mt-1 mb-1 shadow p-5 ">
     <form action="index.php" method="POST">
       <div class="row">
         <div class="col-10">
@@ -80,6 +96,24 @@ $locais =  [
         </div>
         <div class="col-2 justify-content-end ">
           <input name="btn-tt" type="submit" class="btn btn-lg btn-primary  rounded border text-light p-2 justify-content-end" value="Twittar!">
+        </div>
+      </div>
+    </form>
+    <!--  -->
+    <form action="index.php" method="POST">
+      <div class="row">
+        <div class="col-7">
+          <center>
+          <input type="text" name="tweet-loop" placeholder="E ai?..." class="form-control border border-primary p-4"/>
+          </center>
+        </div>
+        <div class="col-3">
+          <center>
+          <input type="number" name="qnt-loop" placeholder="n" class="form-control border border-primary p-4"/>
+          </center>
+        </div>
+        <div class="col-2 justify-content-end ">
+          <input name="btn-tt-loop" type="submit" class="btn btn-lg btn-primary  rounded border text-light p-2 justify-content-end" value="Loop!">
         </div>
       </div>
     </form>
