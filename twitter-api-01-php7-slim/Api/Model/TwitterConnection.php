@@ -7,7 +7,7 @@ class TwitterConnection{
 
 	private $token_de_acesso;
 	private $token_secreto_de_acesso;
-    private $key = "a1s2d3f4g5h6";
+        private $key = "a1s2d3f4g5h6";
 	public $connection;
 
 	public function __construct(){
@@ -20,13 +20,13 @@ class TwitterConnection{
 	/* Conexão Singletoon */
 	public function getTwitterConnection($k=false){
 		try {
-      if($k == $this->key){
-          return $this->connection;
-      }else{
-          exit(json_encode(array("error"=>"Erro em autenticar...")));
-      }
+    		  if($k == $this->key){
+         	      return $this->connection;
+     		  }else{
+     		      exit(json_encode(array("error"=>"Erro em autenticar...")));
+     		  }
 		} catch (PDOException $e) {
-			exit(json_encode(array("error"=>"Conexão muito fraca...")));
+		   exit(json_encode(array("error"=>"Conexão muito fraca...")));
 		}
 	}
 }
