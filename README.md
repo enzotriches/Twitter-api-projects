@@ -4,9 +4,11 @@ ______________________________________
  _____________________________________
 
 * Sobre as pastas:
-  * ``` twitter-api-00-with-php ```  (_[Repositório](https://github.com/enzotriches/Twitter-api-projects/tree/master/twitter-api-00-with-php)_)
+  * ``` php-00-procedural ```  (_[Repositório](https://github.com/enzotriches/Twitter-api-projects/tree/master/php-00-procedural)_)
     * Aplicação básica da API usando PHP procedual
+    * Criamos nosso próprio site do Twitter, onde podemos twittar e ver os trends mais falados por estados.
 
-  * ``` twitter-api-01-php7-slim ```  (_[Repositório](https://github.com/enzotriches/Twitter-api-projects/tree/master/twitter-api-01-php7-slim)_)
+  * ``` php-01-poo-slim ```  (_[Repositório](https://github.com/enzotriches/Twitter-api-projects/tree/master/php-01-poo-slim)_)
     * Aplicação básica da API usando PHP com POO(Programação Orientada a Objetos)
     * Integração da Micro Framework (_[Slim Framework v.3](http://www.slimframework.com/docs/v3/)_)
+    * Criamos um verificador das palavras mais faladas por perfil do Twitter.
