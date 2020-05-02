@@ -1,12 +1,13 @@
-# Projetos de aprendizagem da API do twitter 
-## Usando PHP + Slim Framework
+# Aprendendo o básico da API do Twitter usando [TwitterOAuth PHP](https://twitteroauth.com/)
+**OBS**: _Estamos usando uma Micro-Framework (Slim) e Programação Orientada a Objetos (POO) para criar nossa própria API, fazendo assim nosso_ **contador de palavras repetidas no Twitter!!!**  _!_
 
-### Lembre-se: 
+## Guia: 
 
-1. Abra o terminal no diretório e execute:
+1. Instale o [Composer](https://getcomposer.org/)
 
-``` composer install ```
+2. Abra o terminal no diretório e execute: 
+ ` composer install `
 
-2. Mude as chaves do código para as da sua conta do [Twitter Developers](https://developer.twitter.com/en/apps);
+3. Mude as chaves do código para as da sua conta do [Twitter Developers](https://developer.twitter.com/en/apps);
 
-3. Incremente o projeto e crie algo criativo :D! 
+4. Incremente o projeto e crie algo criativo :D! 
