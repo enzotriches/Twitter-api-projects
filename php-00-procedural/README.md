@@ -1,5 +1,6 @@
 # Aprendendo o básico da API do Twitter usando [TwitterOAuth PHP](https://twitteroauth.com/)
 **OBS**: _O modo procedural do PHP não é uma boa prática, mas caso esteja apenas se divertindo, vá em frente!_
+***Criamos nosso próprio Twitter e uma lista de Trends por estado!***
 
 ## Guia: 
 
