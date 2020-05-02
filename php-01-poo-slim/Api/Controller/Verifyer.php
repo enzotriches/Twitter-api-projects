@@ -87,7 +87,7 @@ class Verifyer{
             $i=0;  
 
             //Verificar conectivos e palavras comuns
-  		  $palavras_comuns = $this->palavras_comuns;          
+  		      $palavras_comuns = $this->palavras_comuns;          
             foreach ($todas_palavras as $val1) {
                 foreach ($palavras_comuns as $val2) {
                   if (trim(strtolower($val1)) == trim(strtolower($val2))) {
@@ -162,38 +162,36 @@ class Verifyer{
             return $palavras_e_frequencia;
   	}
     //ORDENA AS PALAVRAS PELA FREQUENCIA
-  	public function checkRepeatedWords_order_by_frequency($palavras_e_frequencia){
-  		  $i=0;
-            $repetidas = array();
-           //Ordenar o array pela frequencia 
-            foreach ($palavras_e_frequencia as $value) {
-              if ($value["porcentagem"]) {
-               $repetidas[$i] = array(
-                  'porcentagem' => (100*($value["frequencia"]))/count($this->palavras),
-                  'palavra' => $value["palavra"],
-                  'frequencia' => $value["frequencia"]
-               );
-                $i++;
-              }
-            }
-            $i=0;
-            foreach ($repetidas as $key => $value) {
-              $repetidas[$i] = array(
-                  'porcentagem' => number_format((100*($value["frequencia"]))/count($this->palavras),2),
-                  'palavra' => $value["palavra"],
-                  'frequencia' => $value["frequencia"]
-               );
-                $i++;
-            }
-         	 
-         	 array_multisort($repetidas);
-        	 arsort($repetidas);
+    public function checkRepeatedWords_order_by_frequency($palavras_e_frequencia){
+      $i=0;
+      $repetidas = array();
+      //Ordenar o array pela frequencia 
+      foreach ($palavras_e_frequencia as $value) {
+        if ($value["porcentagem"]) {
+          $repetidas[$i] = array(
+            'porcentagem' => (100*($value["frequencia"]))/count($this->palavras),
+            'palavra' => $value["palavra"],
+            'frequencia' => $value["frequencia"]
+          );
+        $i++;
+        }
+      }
+      $i=0;
+      foreach ($repetidas as $key => $value) {
+        $repetidas[$i] = array(
+          'porcentagem' => number_format((100*($value["frequencia"]))/count($this->palavras),2),
+          'palavra' => $value["palavra"],
+          'frequencia' => $value["frequencia"]
+        );
+        $i++;
+      }
+      
+      array_multisort($repetidas);
+      arsort($repetidas);
 
-         	 
-            //for()
-        	 $this->repetidas = $repetidas;
-        	 return $this->repetidas;
-  	}
+      $this->repetidas = $repetidas;
+      return $this->repetidas;
+    }
 	
   //RETORNA A QUANTIDADE DE  X 
 	public function counter($what = 'tweets'){
@@ -214,11 +212,7 @@ class Verifyer{
 				break;
 		}
 		return $valor;
-	}
-
-
-	
-
-	
+  }
+  
 }
 

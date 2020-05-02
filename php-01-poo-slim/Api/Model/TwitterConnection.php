@@ -7,14 +7,14 @@ class TwitterConnection{
 
 	private $token_de_acesso;
 	private $token_secreto_de_acesso;
-        private $key = "a1s2d3f4g5h6";
+    private $key = "a1s2d3f4g5h6";
 	public $connection;
 
 	public function __construct(){
 		/* Mude para suas chaves */
 		$this->token_de_acesso = "{TOKEN DE ACESSO PUBLICO }";
 		$this->token_secreto_de_acesso = "[TOKEN DE ACESSO PRIVADO]";
-		$this->connection = new TwitterOAuth("{API KEY}", "API SECRET KEY", $this->token_de_acesso, $this->token_secreto_de_acesso);
+		$this->connection = new TwitterOAuth("{API KEY}", "{API SECRET KEY}", $this->token_de_acesso, $this->token_secreto_de_acesso);
 	}
 
 	/* Conexão Singletoon */

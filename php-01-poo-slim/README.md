@@ -8,6 +8,8 @@
 2. Abra o terminal no diretório e execute: 
  ` composer install `
 
-3. Mude as chaves do código para as da sua conta do [Twitter Developers](https://developer.twitter.com/en/apps);
+3. Mude as chaves do código para as da sua conta do [Twitter Developers](https://developer.twitter.com/en/apps) em ./Model/TwitterConnection.php;
 
-4. Incremente o projeto e crie algo criativo :D! 
+4. Coloque o link da sua api em ./View/js/AjaxRequest.js
+
+5. Incremente o projeto, melhore e crie algo criativo :D! 

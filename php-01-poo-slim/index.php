@@ -51,7 +51,8 @@ $app->get('/', function ($request, $response, $args) {
 });
 
 $app->get('/auth/{auth}/users/{user}', function ($request, $response, $args) {
-    
+    //Esse auth ai é bizarro? Sim, não se usa isso ai.
+    //Então pq ta ai? Está ai 
     $auth = trim(stripslashes($args['auth']));  
     $who = trim(stripcslashes($args['user']));
     $vf = new Verifyer($auth);
