@@ -10,6 +10,6 @@
 
 3. Mude as chaves do código para as da sua conta do [Twitter Developers](https://developer.twitter.com/en/apps) em ./Model/TwitterConnection.php;
 
-4. Coloque o link da sua api em ./View/js/AjaxRequest.js
+4. Coloque o link da sua api em ./Assets/js/AjaxRequest.js
 
 5. Incremente o projeto, melhore e crie algo criativo :D! 
